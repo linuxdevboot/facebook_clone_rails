@@ -1,0 +1,27 @@
+<div class="jumbotron text-center">
+  <h2>People</h2>
+  <div class="btn-group" role="group" aria-label="Default Button Groups">
+    <button type="button" class="btn btn-default">Everyone</button>
+    <button type="button" class="btn btn-default">Friends</button>
+    <button type="button" class="btn btn-default">Requests</button>
+    <button type="button" class="btn btn-default">Pending</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+  <% @users.each do |user| %> 
+    <div class="col-md-3">
+      <div class="thumbnail">
+        <%= link_to user_path(user.username) do %>
+          <%= gravatar_tag user.email, size: 200 %>
+        <% end %>
+        <div class="caption">
+          <h3><%= user.username %></h3>
+          <p>Friendship Actions</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
