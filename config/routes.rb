@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resources :users, only: [:show, :index]
+  resources :frienships, only: [:create, :destroy] do 
+    member do 
+      put :accept
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

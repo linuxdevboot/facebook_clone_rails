@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
     self.inverse_frienships.where(state: "pending")
   end
 
+  def friendship_relation(user_2)
+    Frienship.where(user_id: [self.id,user_2.id], friend_id: [self.id,user_2.id]).first
+  end
+
   def friendship_status(user_2)
     friendship = Frienship.where(user_id: [self.id,user_2.id], friend_id: [self.id,user_2.id])
     unless friendship.any?
