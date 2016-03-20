@@ -36,7 +36,9 @@
     </div>
     <!-- Post Zone -->
     <div class="col-md-6">
-      <%= render "posts/form" %>
+      <% if current_user && current_user == @user %>
+        <%= render "posts/form" %>
+      <% end %>
       <% @posts.each do |post| %>
         <div class="panel panel-default">
           <div class="panel-heading">
