@@ -21,8 +21,10 @@
           <p><small><%=  time_ago_in_words(activity.created_at)%> ago</small></p>
         </div>
         <div class="timeline-body">
-         <% case activity.trackable_type when "Post" %>
+         <% if activity.trackable_type == "Post" %>
            <%= activity.trackable.content %>
+         <% else %>
+           <p><%= link_to activity.owner.username, user_path(activity.owner.username) %> is now friends with <%= link_to activity.recipient.username, user_path(activity.recipient.username) %></p>
           <% end %>
         </div>
       <% end %>
